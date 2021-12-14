@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3095BAC1-70C9-483C-A536-46F0F6DCD843}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMBroker", "src\VMBroker\VMBroker.csproj", "{A6C33428-AB79-48EF-B30D-4A9335B24188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMBroker.Test", "src\VMBroker.Test\VMBroker.Test.csproj", "{7A6701B3-3CAB-4D8B-9581-868AE33BAE7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C33428-AB79-48EF-B30D-4A9335B24188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C33428-AB79-48EF-B30D-4A9335B24188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C33428-AB79-48EF-B30D-4A9335B24188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C33428-AB79-48EF-B30D-4A9335B24188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A6701B3-3CAB-4D8B-9581-868AE33BAE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A6701B3-3CAB-4D8B-9581-868AE33BAE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A6701B3-3CAB-4D8B-9581-868AE33BAE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A6701B3-3CAB-4D8B-9581-868AE33BAE7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6C33428-AB79-48EF-B30D-4A9335B24188} = {3095BAC1-70C9-483C-A536-46F0F6DCD843}
+		{7A6701B3-3CAB-4D8B-9581-868AE33BAE7A} = {3095BAC1-70C9-483C-A536-46F0F6DCD843}
+	EndGlobalSection
+EndGlobal

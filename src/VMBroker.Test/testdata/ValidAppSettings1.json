@@ -1,0 +1,12 @@
+{
+    "VMBroker": {
+        "VirtualMachineDetails": [
+            {
+                "Name": "VM1",
+                "Id": "eca3bda4-3a11-43d7-af13-24ee576dd354",
+                "PipeName": "TestPipe",
+                "IpAddress": "172.20.174.194"
+            }
+        ]
+    }
+}

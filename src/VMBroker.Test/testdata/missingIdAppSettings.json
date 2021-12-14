@@ -1,0 +1,11 @@
+{
+    "VMBroker": {
+        "VirtualMachineDetails": [
+            {
+                "Name": "wagi-vm1",
+                "PipeName": "TestPipe",
+                "IpAddress": "172.20.174.194"
+            }
+        ]
+    }
+}

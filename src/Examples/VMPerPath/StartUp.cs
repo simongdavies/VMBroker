@@ -18,7 +18,7 @@ using Yarp.ReverseProxy.Forwarder;
 using Yarp.ReverseProxy.Transforms;
 
 /// <summary>
-/// 
+///
 /// </summary>
 public class Startup
 {
@@ -27,7 +27,7 @@ public class Startup
     private readonly ConcurrentDictionary<string, AllocatedVirtualMachine> _pathPrefixToVM = new();
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="configuration"></param>
     public Startup(IConfiguration configuration)
@@ -36,7 +36,7 @@ public class Startup
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public void ConfigureServices(IServiceCollection services)
     {
@@ -61,20 +61,20 @@ public class Startup
         // Add the Virtual Machine Managment services
 
         services.AddSingleton<VirtualMachineRecycleChannel>();
-        services.AddSingleton<VirtualMachineManager>();
+        services.AddSingleton<VirtualMachineRecyler>();
         services.AddSingleton<AvailableVirtualMachines>();
         services.AddHostedService<AvailableVirtualMachineManagerService>();
         services.AddHttpClient();
         services.AddHttpForwarder();
 
         // Add the per path recycler.
-        
+
         services.AddSingleton<ConcurrentDictionary<string, AllocatedVirtualMachine>>(_pathPrefixToVM);
         services.AddHostedService<VirtualMachineRecycleService>();
     }
 
     /// <summary>
-    ///     
+    ///
     /// </summary>
     public void Configure(IApplicationBuilder applicationBuilder, IWebHostEnvironment env, IHttpForwarder forwarder, ILoggerFactory loggerFactory, AvailableVirtualMachines availableVirtualMachines)
     {
@@ -129,7 +129,7 @@ public class Startup
                             var errorFeature = httpContext.Features.Get<IForwarderErrorFeature>();
                             logger.Error("Error forwarding request", errorFeature?.Exception);
                         }
-                        
+
                     });
             });
         }

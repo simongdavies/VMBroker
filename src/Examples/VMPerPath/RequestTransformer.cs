@@ -7,9 +7,9 @@ class RequestTransformer : HttpTransformer
     public override async ValueTask TransformRequestAsync(HttpContext httpContext, HttpRequestMessage proxyRequest, string destinationPrefix)
     {
         await base.TransformRequestAsync(httpContext, proxyRequest, destinationPrefix).ConfigureAwait(false);
-        var pathSegments = httpContext.Request.Path.Value!.Split('/'); 
+        var pathSegments = httpContext.Request.Path.Value!.Split('/');
         var newPath = "/";
-        
+
         if (pathSegments.Length > 2)
         {
             newPath = $"/{string.Join("/", pathSegments.Skip(2)).TrimEnd('/')}";

@@ -10,15 +10,15 @@ using VMBroker.Extensions;
 using VMBroker.Management;
 
 /// <summary>
-/// 
+///
 /// </summary>
 public class VirtualMachineRecycleService : BackgroundService
 {
     private readonly ConcurrentDictionary<string, AllocatedVirtualMachine> _pathPrefixToVM;
-    private ILogger<VirtualMachineRecycleService> _logger;
+    private readonly ILogger<VirtualMachineRecycleService> _logger;
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="pathPrefixToVM"></param>
     /// <param name="logger"></param>
@@ -27,17 +27,17 @@ public class VirtualMachineRecycleService : BackgroundService
         _pathPrefixToVM = pathPrefixToVM;
         _logger = logger;
     }
-    /// <inheritdoc />  
+    /// <inheritdoc />
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         _logger.Trace("Started Service");
         var delay = TimeSpan.FromSeconds(10);
         Action<object?> recycleVM = async (vm) =>
         {
-            InUseVirtualMachine inUseVirtualMachine = (InUseVirtualMachine) vm!;
+            InUseVirtualMachine inUseVirtualMachine = (InUseVirtualMachine)vm!;
             try
             {
-                 // Delay removing a VM for 10 seconds to allow any in-flight requests to complete.
+                // Delay removing a VM for 10 seconds to allow any in-flight requests to complete.
                 _logger.Trace($"Waiting for requests to complete before removing VM Id {inUseVirtualMachine.Id}");
                 await Task.Delay(delay, stoppingToken).ConfigureAwait(false);
                 _logger.Trace($"Removing VM Id {inUseVirtualMachine.Id}");
@@ -63,8 +63,8 @@ public class VirtualMachineRecycleService : BackgroundService
                     if (VM.IsExpired())
                     {
                         _logger.Trace($"Recycling VM Id {VM.InUseVirtualMachine.Id}");
-                        var removed=_pathPrefixToVM.TryRemove(item.Key, out _);
-                        
+                        var removed = _pathPrefixToVM.TryRemove(item.Key, out _);
+
                         if (removed)
                         {
                             await Task.Factory.StartNew(recycleVM, VM.InUseVirtualMachine, stoppingToken, TaskCreationOptions.LongRunning, TaskScheduler.Default).ConfigureAwait(false);
@@ -74,9 +74,9 @@ public class VirtualMachineRecycleService : BackgroundService
                         {
                             _logger.Error($"Failed to remove VM Id {VM.InUseVirtualMachine.Id}");
                         }
-                        
+
                     }
-                    
+
                 }
                 _logger.Trace($"Recycled {count_of_vms_recycled} VMs");
             }

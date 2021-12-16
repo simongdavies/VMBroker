@@ -2,16 +2,16 @@ namespace VMPerPath;
 
 using VMBroker.Management;
 /// <summary>
-/// 
+///
 /// </summary>
 public class AllocatedVirtualMachine
 
 {
-    private InUseVirtualMachine _inUseVirtualMachine;
+    private readonly InUseVirtualMachine _inUseVirtualMachine;
     private DateTime _lastUsedTime;
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     public bool IsExpired()
@@ -20,12 +20,12 @@ public class AllocatedVirtualMachine
     }
 
     /// <summary>
-    ///     
+    ///
     /// </summary>
     public DateTime LastUsedTime => _lastUsedTime;
-    
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <value></value>
     public InUseVirtualMachine InUseVirtualMachine
